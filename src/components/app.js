@@ -24,6 +24,7 @@ const pages = {
     button: "Sign up",
     button_saving: "Signing Up",
     name: true,
+    zip: true,
     email: true,
     password: true,
     providers: true
@@ -64,7 +65,7 @@ class App extends Component {
   handleSiteURL = url => this.props.store.setSiteURL(url);
   clearSiteURL = url => this.props.store.clearSiteURL();
   handleExternalLogin = provider => this.props.store.externalLogin(provider);
-  handleUser = ({ name, email, password }) => {
+  handleUser = ({ name, zip, email, password }) => {
     const { store } = this.props;
 
     switch (store.modal.page) {
@@ -72,7 +73,7 @@ class App extends Component {
         store.login(email, password);
         break;
       case "signup":
-        store.signup(name, email, password);
+        store.signup(name, zip, email, password);
         break;
       case "amnesia":
         store.requestPasswordRecovery(email);

@@ -5,7 +5,7 @@ import Button from "./button";
 export default class UserForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { name: "", email: "", password: "" };
+    this.state = { name: "", email: "", password: "", zip: "" };
   }
 
   handleInput = e => {
@@ -19,7 +19,7 @@ export default class UserForm extends Component {
 
   render() {
     const { page, message, saving, namePlaceholder } = this.props;
-    const { name, email, password } = this.state;
+    const { name, email, zip, password } = this.state;
 
     return (
       <form
@@ -37,6 +37,16 @@ export default class UserForm extends Component {
                 name="name"
                 value={name}
                 placeholder={namePlaceholder ? namePlaceholder : "Name"}
+                autocapitalize="off"
+                required
+                oninput={this.handleInput}
+              />
+              <input
+                className="formControl"
+                type="zip"
+                name="zip"
+                value={zip}
+                placeholder="Zip"
                 autocapitalize="off"
                 required
                 oninput={this.handleInput}
